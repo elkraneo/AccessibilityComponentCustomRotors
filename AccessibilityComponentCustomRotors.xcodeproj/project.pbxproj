@@ -7,20 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4024F8A62BE28F0100DCB5A5 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 4024F8A52BE28F0100DCB5A5 /* RealityKitContent */; };
 		4024F8A82BE28F0100DCB5A5 /* AccessibilityComponentCustomRotorsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4024F8A72BE28F0100DCB5A5 /* AccessibilityComponentCustomRotorsApp.swift */; };
 		4024F8AA2BE28F0100DCB5A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4024F8A92BE28F0100DCB5A5 /* ContentView.swift */; };
-		4024F8AC2BE28F0100DCB5A5 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4024F8AB2BE28F0100DCB5A5 /* ImmersiveView.swift */; };
 		4024F8AE2BE28F0300DCB5A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4024F8AD2BE28F0300DCB5A5 /* Assets.xcassets */; };
 		4024F8B12BE28F0300DCB5A5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4024F8B02BE28F0300DCB5A5 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4024F8A02BE28F0100DCB5A5 /* AccessibilityComponentCustomRotors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AccessibilityComponentCustomRotors.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4024F8A42BE28F0100DCB5A5 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		4024F8A72BE28F0100DCB5A5 /* AccessibilityComponentCustomRotorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityComponentCustomRotorsApp.swift; sourceTree = "<group>"; };
 		4024F8A92BE28F0100DCB5A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		4024F8AB2BE28F0100DCB5A5 /* ImmersiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveView.swift; sourceTree = "<group>"; };
 		4024F8AD2BE28F0300DCB5A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4024F8B02BE28F0300DCB5A5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4024F8B22BE28F0300DCB5A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,7 +27,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4024F8A62BE28F0100DCB5A5 /* RealityKitContent in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,7 +55,6 @@
 			children = (
 				4024F8A72BE28F0100DCB5A5 /* AccessibilityComponentCustomRotorsApp.swift */,
 				4024F8A92BE28F0100DCB5A5 /* ContentView.swift */,
-				4024F8AB2BE28F0100DCB5A5 /* ImmersiveView.swift */,
 				4024F8AD2BE28F0300DCB5A5 /* Assets.xcassets */,
 				4024F8B22BE28F0300DCB5A5 /* Info.plist */,
 				4024F8AF2BE28F0300DCB5A5 /* Preview Content */,
@@ -71,7 +65,6 @@
 		4024F8A32BE28F0100DCB5A5 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				4024F8A42BE28F0100DCB5A5 /* RealityKitContent */,
 			);
 			path = Packages;
 			sourceTree = "<group>";
@@ -101,7 +94,6 @@
 			);
 			name = AccessibilityComponentCustomRotors;
 			packageProductDependencies = (
-				4024F8A52BE28F0100DCB5A5 /* RealityKitContent */,
 			);
 			productName = AccessibilityComponentCustomRotors;
 			productReference = 4024F8A02BE28F0100DCB5A5 /* AccessibilityComponentCustomRotors.app */;
@@ -159,7 +151,6 @@
 			files = (
 				4024F8AA2BE28F0100DCB5A5 /* ContentView.swift in Sources */,
 				4024F8A82BE28F0100DCB5A5 /* AccessibilityComponentCustomRotorsApp.swift in Sources */,
-				4024F8AC2BE28F0100DCB5A5 /* ImmersiveView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,13 +350,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		4024F8A52BE28F0100DCB5A5 /* RealityKitContent */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = RealityKitContent;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4024F8982BE28F0100DCB5A5 /* Project object */;
 }

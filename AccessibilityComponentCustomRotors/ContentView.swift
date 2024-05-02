@@ -5,53 +5,80 @@
 //  Created by Cristian Díaz Peredo on 01.05.24.
 //
 
-import SwiftUI
 import RealityKit
-import RealityKitContent
+import SwiftUI
+
+class CustomEntity1: Entity, HasModel {
+  required init() {
+    super.init()
+
+    self.model = ModelComponent(
+      mesh: .generateSphere(radius: 0.1),
+      materials: [SimpleMaterial(color: .purple, isMetallic: false)]
+    )
+
+    var accessibilityComponent = AccessibilityComponent()
+    accessibilityComponent.isAccessibilityElement = true
+    accessibilityComponent.customRotors = [.custom("My Custom Rotor")]
+    self.components[AccessibilityComponent.self] = accessibilityComponent
+
+    dump(self)
+  }
+}
+
+class CustomEntity2: Entity, HasModel {
+  required init() {
+    super.init()
+
+    self.model = ModelComponent(
+      mesh: .generateSphere(radius: 0.1),
+      materials: [SimpleMaterial(color: .blue, isMetallic: false)]
+    )
+
+    var accessibilityComponent = AccessibilityComponent()
+    accessibilityComponent.isAccessibilityElement = true
+    accessibilityComponent.customRotors = [.system(.list)]
+    accessibilityComponent.traits = [.adjustable]
+    self.components[AccessibilityComponent.self] = accessibilityComponent
+
+    dump(self)
+  }
+}
 
 struct ContentView: View {
+  @State private var systemRotorSubscription: EventSubscription?
+  @State private var customRotorNavigationSubscription: EventSubscription?
+  @State private var customRotorNavigationSubscription2: EventSubscription?
 
-    @State private var showImmersiveSpace = false
-    @State private var immersiveSpaceIsShown = false
+  var body: some View {
+    RealityView { content in
+      let entity1 = CustomEntity1()
+      customRotorNavigationSubscription = content.subscribe(
+        to: AccessibilityEvents.RotorNavigation.self,
+        on: entity1,
+        componentType: AccessibilityComponent.self
+      ) { event in
+        print("AccessibilityEvents.RotorNavigation")
+      }
 
-    @Environment(\.openImmersiveSpace) var openImmersiveSpace
-    @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
+      entity1.position.x = -0.15
+      content.add(entity1)
 
-    var body: some View {
-        VStack {
-            Model3D(named: "Scene", bundle: realityKitContentBundle)
-                .padding(.bottom, 50)
+      //MARK: -
 
-            Text("Hello, world!")
-
-            Toggle("Show ImmersiveSpace", isOn: $showImmersiveSpace)
-                .font(.title)
-                .frame(width: 360)
-                .padding(24)
-                .glassBackgroundEffect()
-        }
-        .padding()
-        .onChange(of: showImmersiveSpace) { _, newValue in
-            Task {
-                if newValue {
-                    switch await openImmersiveSpace(id: "ImmersiveSpace") {
-                    case .opened:
-                        immersiveSpaceIsShown = true
-                    case .error, .userCancelled:
-                        fallthrough
-                    @unknown default:
-                        immersiveSpaceIsShown = false
-                        showImmersiveSpace = false
-                    }
-                } else if immersiveSpaceIsShown {
-                    await dismissImmersiveSpace()
-                    immersiveSpaceIsShown = false
-                }
-            }
-        }
+      let entity2 = CustomEntity2()
+      customRotorNavigationSubscription = content.subscribe(
+        to: AccessibilityEvents.Increment.self,
+        componentType: AccessibilityComponent.self
+      ) { event in
+        print("AccessibilityEvents.Increment")
+      }
+      entity2.position.x = 0.15
+      content.add(entity2)
     }
+  }
 }
 
 #Preview(windowStyle: .automatic) {
-    ContentView()
+  ContentView()
 }
