@@ -67,11 +67,19 @@ struct ContentView: View {
       //MARK: -
 
       let entity2 = CustomEntity2()
-      customRotorNavigationSubscription = content.subscribe(
+      systemRotorSubscription = content.subscribe(
         to: AccessibilityEvents.Increment.self,
+        on: entity2,
         componentType: AccessibilityComponent.self
       ) { event in
         print("AccessibilityEvents.Increment")
+      }
+      customRotorNavigationSubscription2 = content.subscribe(
+        to: AccessibilityEvents.RotorNavigation.self,
+        on: entity2,
+        componentType: AccessibilityComponent.self
+      ) { event in
+        print("AccessibilityEvents.RotorNavigation2")
       }
       entity2.position.x = 0.15
       content.add(entity2)
